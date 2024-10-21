@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import './globals.css';
+import type { Metadata } from "next";
+import "./globals.css";
 
-import { NextUIProvider } from '@nextui-org/react';
+import { NextUIProvider } from "@nextui-org/react";
 
 export const metadata: Metadata = {
-  title: 'Great Meat',
-  description: 'Created by Nexacode - Great Meat',
+  title: "NexaCode - JOEUN TOUR",
+  description: "Created by Nexacode - JOEUN TOUR",
 };
 
 export default function RootLayout({
