@@ -18,7 +18,7 @@ import React, { useState } from "react";
 import MainHead from "./head";
 import BlueAndBlackBtn from "@/components/blueAndBlackBtn";
 
-const registerMember = () => {
+const RegisterMember = () => {
   // Pagination Logic
   const [page, setPage] = useState(1);
 
@@ -34,7 +34,7 @@ const registerMember = () => {
 
     setCurrentData(row2Column1.slice(start, end));
     return row2Column1.slice(start, end);
-  }, [page, row2Column1, 10, rowsPerPage]);
+  }, [page, rowsPerPage]);
 
   // Selection Logic
   const [clickedRowIds, setClickedRowIds] = useState<number[]>([]);
@@ -169,4 +169,4 @@ const registerMember = () => {
   );
 };
 
-export default registerMember;
+export default RegisterMember;
