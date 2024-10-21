@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
-import sideBarContents from '../data/sideBar';
+import sideBarContents from "../data/sideBar";
 
-import Navigation from '@/components/Navigation';
-import Image from 'next/image';
-import logo from '@/assets/logo.svg';
+import Navigation from "@/components/Navigation";
+import Image from "next/image";
+import logo from "@/assets/logo.svg";
 
 const SideBar = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className='flex bg-[#F3F3F3]'>
-      <article className='bg-white rounded-tr-[30px]  min-w-[280px] min-h-screen'>
-        <div className='flex justify-center items-center pt-[55px]'>
-          <div className=' flex justify-center items-center w-[210px] h-[55px] '>
-            <Image src={logo} alt='Our logo - Great Meat' />
+    <section className="flex bg-[#F3F3F3]">
+      <article className="min-h-screen min-w-[280px] rounded-tr-[30px] bg-white">
+        <div className="flex items-center justify-center pt-[55px]">
+          <div className="flex h-[55px] w-[210px] items-center justify-center">
+            <Image src={logo} alt="Our logo - Great Meat" />
           </div>
         </div>
 
-        <section className='pt-16  flex justify-center items-center '>
+        <section className="flex items-center justify-center pt-16">
           <section>
             {sideBarContents.map((item) => (
               <Navigation
@@ -37,7 +37,7 @@ const SideBar = ({ children }: { children: React.ReactNode }) => {
         </section>
       </article>
 
-      <section className='w-full pl-9 py-12 pr-6'>{children}</section>
+      <section className="w-full py-12 pl-9 pr-6">{children}</section>
     </section>
   );
 };
