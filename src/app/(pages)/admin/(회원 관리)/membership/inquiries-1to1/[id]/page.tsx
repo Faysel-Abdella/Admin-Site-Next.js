@@ -1,10 +1,6 @@
 "use client";
-import MainButton from "@/components/button";
 import CommonHeader from "@/components/CommonHeader";
-import DropDownWithLabel from "@/components/DropDownWithLabel";
-import InputWithLabelActive from "@/components/InputWithLabelActive";
 import { Input, Textarea } from "@nextui-org/react";
-import React from "react";
 
 const InquiriesOnetoOneIdPage = () => {
   const options = [

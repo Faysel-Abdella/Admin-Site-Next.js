@@ -1,178 +1,130 @@
 "use client";
 import CommonHeader from "@/components/CommonHeader";
-import {
-  Checkbox,
-  Link,
-  Pagination,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-} from "@nextui-org/react";
+import DropDownWithLabel from "@/components/DropDownWithLabel";
 
-import row1Column5 from "@/data/tables/column3/row1column5";
-import React, { useState } from "react";
-
-import MainHead from "./head";
+import redbg from "@/assets/redbg.png";
 import BlueAndBlackBtn from "@/components/blueAndBlackBtn";
+import InputWithLabelActive from "@/components/InputWithLabelActive";
+import { Input, Textarea } from "@nextui-org/react";
+import Image from "next/image";
 
-const CourseRegistrationPage = () => {
-  // Pagination Logic
-  const [page, setPage] = useState(1);
-
-  const rowsPerPage = 10;
-
-  const pages = Math.ceil(row1Column5.length / rowsPerPage);
-
-  const [currentData, setCurrentData] = useState<any>();
-
-  const items = React.useMemo(() => {
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-
-    setCurrentData(row1Column5.slice(start, end));
-    return row1Column5.slice(start, end);
-  }, [page, row1Column5, 5, rowsPerPage]);
-
-  // Selection Logic
-  const [clickedRowIds, setClickedRowIds] = useState<number[]>([]);
-  const [allListCheckedPageNumbers, setAllListCheckedPageNumbers] = useState<
-    number[]
-  >([]);
+const CourseRegistrationDetailPage = () => {
+  // selection field
+  const options = [
+    { key: "1", label: "선택" },
+    { key: "2", label: "일반회원" },
+    { key: "3", label: "판매자" },
+    { key: "4", label: "관리자" },
+  ];
   return (
-    <section className="font-noto">
-      <header>
-        <CommonHeader title="단체방 등록" />
-        <MainHead />
-      </header>
+    <div>
+      <CommonHeader title="코스 상세정보" />
 
-      <main className="mt-6 rounded-[20px] bg-white px-5 py-6">
-        <h2 className="text-center text-[20px] font-bold leading-[42px] text-mainBlack">
-          8월 10일 예약현황
-        </h2>
+      <div className="mt-4 rounded-[20px] bg-mainWhite px-9 py-7">
+        <div className="mt-[20px] flex items-end justify-between">
+          <DropDownWithLabel
+            title="언어"
+            options={options}
+            defaultSelectedKeys="1"
+            titleStyles="  w-[90px]"
+            insideStyles=" w-[350px] h-[44px] "
+          />
+          <div className="w-[350px]"></div>
+          <div className="w-[350px]"></div>
+        </div>
+        <div className="mt-[20px] flex items-end justify-between">
+          <InputWithLabelActive
+            label="코스명"
+            type="text"
+            placeholder=""
+            inputStyles="w-[350px] h-[44px] placeholder:text-[#A1A9A3]"
+            defaultValue=""
+          />
+          <InputWithLabelActive
+            label="코스 순번"
+            type="text"
+            placeholder=""
+            inputStyles="w-[350px] h-[44px] placeholder:text-[#A1A9A3]"
+            defaultValue=""
+          />
 
-        <article>
-          <Table
-            aria-label="Data Table"
-            shadow="none"
-            classNames={{
-              th: [
-                "font-normal text-[16px] bg-[#EEEEEE] text-[#A1A9A3] h-[48px]  text-center ",
-              ],
-              td: [
-                "px-6 py-3 text-center font-normal text-base text-[#363941]", // General td styles
-              ],
-            }}
-            bottomContent={
-              <div className="mt-8 flex w-full justify-center">
-                <Pagination
-                  isCompact
-                  showControls
-                  showShadow
-                  color="primary"
-                  page={page}
-                  total={pages}
-                  onChange={(page) => setPage(page)}
+          <div className="w-[350px]"></div>
+        </div>
+        <div className="mt-[20px] flex items-end justify-between">
+          <div className="flex-grow">
+            <h3 className="mb-2 text-nowrap text-sm font-bold text-mainGray">
+              코스 이미지
+            </h3>
+            <div className="flex items-center gap-4">
+              <button className="rounded-xl bg-[#A2ABAF] px-8 py-[8px] text-white">
+                파일 선택
+              </button>
+              <div className="flex-grow">
+                <Input
+                  placeholder=""
+                  type="text"
+                  onChange={() => {}}
+                  classNames={{
+                    input: [
+                      "placeholder:text-[#A1A9A3] placeholder:text-[14px] text-[15px]",
+                    ],
+                    inputWrapper: [
+                      "bg-[#ffffff] border-[1px] border-[#DADFE2] rounded-[12px] w-full",
+                    ],
+                  }}
+                  className="text-[15px] placeholder:text-[16px] placeholder:text-mainBlack"
                 />
               </div>
-            }
-          >
-            <TableHeader className="th-border-1">
-              <TableColumn className="flex items-center justify-center">
-                <Checkbox
-                  onClick={() => {
-                    if (allListCheckedPageNumbers.includes(page)) {
-                      setAllListCheckedPageNumbers(
-                        allListCheckedPageNumbers.filter(
-                          (number) => number !== page,
-                        ),
-                      );
-                      setClickedRowIds(
-                        clickedRowIds.filter(
-                          (id) =>
-                            !currentData
-                              .map((item: any) => item.number)
-                              .includes(id),
-                        ),
-                      );
-                    } else {
-                      setClickedRowIds([
-                        ...clickedRowIds,
-                        ...currentData.map((item: any) => item.number),
-                      ]);
-                      setAllListCheckedPageNumbers([
-                        ...allListCheckedPageNumbers,
-                        page,
-                      ]);
-                    }
-                  }}
-                  className={`size-[14px] rounded-[2px] bg-transparent`}
-                  isSelected={allListCheckedPageNumbers.includes(page)}
-                ></Checkbox>
-              </TableColumn>
-              <TableColumn>No</TableColumn>
-              <TableColumn>투어일자</TableColumn>
-              <TableColumn>투어시간</TableColumn>
-              <TableColumn>단체방명</TableColumn>
-              <TableColumn>진행상태</TableColumn>
-              <TableColumn>방장</TableColumn>
-              <TableColumn>이메일</TableColumn>
-              <TableColumn>휴대폰 번호</TableColumn>
-              <TableColumn>결제방법</TableColumn>
-              <TableColumn>비고</TableColumn>
-            </TableHeader>
-            <TableBody>
-              {items.map((row) => (
-                <TableRow key={row.id} className="border-b-1">
-                  <TableCell>
-                    <Checkbox
-                      className={`size-[14px] rounded-[2px] text-center`}
-                      onClick={() => {
-                        if (clickedRowIds.includes(row.number)) {
-                          setClickedRowIds(
-                            clickedRowIds.filter((id) => id !== row.number),
-                          );
-                        } else {
-                          setClickedRowIds([...clickedRowIds, row.number]);
-                        }
-                      }}
-                      isSelected={clickedRowIds.includes(row.number)}
-                    ></Checkbox>
-                  </TableCell>
-                  <TableCell>{row.No}</TableCell>
+            </div>
+          </div>
 
-                  <TableCell>{row.tourDate}</TableCell>
-                  <TableCell>{row.tourTime}</TableCell>
-                  <TableCell>
-                    {" "}
-                    <Link
-                      href={`/admin/membership/customer-satisfaction/${row.id}`}
-                      className="text-blue underline underline-offset-2"
-                    >
-                      {row.gRoom}
-                    </Link>
-                  </TableCell>
-
-                  <TableCell>{row.progress}</TableCell>
-                  <TableCell>{row.roomManager}</TableCell>
-                  <TableCell>{row.email}</TableCell>
-                  <TableCell>{row.phoneNumber}</TableCell>
-                  <TableCell>{row.paymentmethod}</TableCell>
-                  <TableCell>{row.note}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </article>
-        <div className="mt-8 flex justify-between">
-          <div></div>
-          <BlueAndBlackBtn />
+          {/* Fixed width for the space at the end */}
+          <div className="w-[380px]"></div>
         </div>
-      </main>
-    </section>
+        <div className="mt-[20px] flex items-end justify-between">
+          <div className="h-[210px] w-[770px] rounded-[12px] border border-[#DADFE2] p-[14px_24px]">
+            <Image
+              src={redbg}
+              alt="Image"
+              className="w-[152px]object-cover h-[152px]"
+            />
+          </div>
+        </div>
+        <div className="w-full">
+          <h1 className="my-4 text-mainGray">코스 경로</h1>
+          <Textarea
+            key="bordered"
+            variant="bordered"
+            placeholder=""
+            height="590px"
+            classNames={{
+              input: "text-[15px] placeholder:text-mainGray ",
+            }}
+            minRows={4}
+          />
+        </div>
+        <div className="w-full">
+          <h1 className="my-4 text-mainGray">비고 </h1>
+          <Textarea
+            key="bordered"
+            variant="bordered"
+            placeholder=""
+            height="590px"
+            classNames={{
+              input: "text-[15px] placeholder:text-mainGray ",
+            }}
+            minRows={4}
+          />
+        </div>
+      </div>
+      <div className="mt-8 flex justify-between">
+        <button className="h-[50px] rounded-xl bg-[#A2ABAF] px-8 py-[14px] text-white">
+          취소
+        </button>
+        <BlueAndBlackBtn />
+      </div>
+    </div>
   );
 };
 
-export default CourseRegistrationPage;
+export default CourseRegistrationDetailPage;

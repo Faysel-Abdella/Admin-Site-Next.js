@@ -96,7 +96,7 @@ const GameProgressPage = () => {
                   <TableCell>{row.tourTime}</TableCell>
                   <TableCell className="overflow-hidden text-ellipsis whitespace-nowrap">
                     <Link
-                      href={`/admin/membership/customer-satisfaction/${row.id}`}
+                      href={`/admin/group-room/game-progress/${row.id}`}
                       className="text-blue underline underline-offset-2"
                     >
                       {row.groupRoom}

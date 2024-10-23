@@ -136,7 +136,7 @@ const CourseRegistrationPage = () => {
 
                   <TableCell className="overflow-hidden text-ellipsis whitespace-nowrap">
                     <Link
-                      href={`/admin/membership/customer-satisfaction/${row.id}`}
+                      href={`/admin/group-room/course-registration/${row.id}`}
                       className="text-blue underline underline-offset-2"
                     >
                       {row.courseName}

@@ -137,7 +137,7 @@ const TransitRegisterPage = () => {
 
                   <TableCell className="overflow-hidden text-ellipsis whitespace-nowrap">
                     <Link
-                      href={`/admin/membership/customer-satisfaction/${row.id}`}
+                      href={`/admin/group-room/transit-register/${row.id}`}
                       className="text-blue underline underline-offset-2"
                     >
                       {row.courseName}

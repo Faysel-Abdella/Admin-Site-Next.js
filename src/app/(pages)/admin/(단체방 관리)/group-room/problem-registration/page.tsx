@@ -137,7 +137,7 @@ const ProblemRegistrationPage = () => {
 
                   <TableCell>
                     <Link
-                      href={`/admin/membership/customer-satisfaction/${row.id}`}
+                      href={`/admin/group-room/problem-registration/${row.id}`}
                       className="text-blue underline underline-offset-2"
                     >
                       {row.transitPointName}

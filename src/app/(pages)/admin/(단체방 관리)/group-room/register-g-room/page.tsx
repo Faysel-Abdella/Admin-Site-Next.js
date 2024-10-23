@@ -144,7 +144,7 @@ const RegisterGRoomPage = () => {
                   <TableCell>
                     {" "}
                     <Link
-                      href={`/admin/membership/customer-satisfaction/${row.id}`}
+                      href={`/admin/group-room/register-g-room/${row.id}`}
                       className="text-blue underline underline-offset-2"
                     >
                       {row.gRoom}
