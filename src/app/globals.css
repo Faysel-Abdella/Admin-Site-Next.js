@@ -65,10 +65,7 @@
   min-height: 70px;
   text-align: center;
   margin: auto auto;
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  border-radius: 12px;
+  /* border-radius: 12px; */
   padding: 24px;
   gap: 24px;
   background-color: #f4f6f7;
