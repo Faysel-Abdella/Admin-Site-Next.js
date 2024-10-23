@@ -4,20 +4,92 @@
 @tailwind components;
 @tailwind utilities;
 
-.rbc-header {
-  color: #a2abaf;
-  font-size: 14px !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 36px !important;
-  background: #f4f6f7 !important;
-  font-weight: 500;
+.fc-day-disabled {
+  background-color: transparent;
+  background-color: white;
 }
-.rbc-allday-cell {
+
+.fc-day {
+  padding: 0 20px;
+  margin: 0 20px;
+}
+
+.fc--button.fc-button.fc-button-primary {
   display: none;
 }
-.rbc-time-header-cell .rbc-today {
+
+.fc-toolbar .fc-prev-button,
+.fc-toolbar .fc-next-button {
+  width: 50px;
+  height: 50px;
+  background-color: #424242;
+  color: white;
+  border-radius: 12px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.fc-toolbar .fc-next-button {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.fc-toolbar .fc-today-button {
+  width: 100px;
+  height: 50px;
+  background-color: #6d8eeb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.fc-toolbar .fc-prev-button:hover,
+.fc-toolbar .fc-next-button:hover,
+.fc-toolbar .fc-today-button:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+.fc-toolbar-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -2%;
+  text-align: center;
   color: #424242;
-  background: red !important;
+}
+
+.fc-col-header {
+  height: 70px;
+  min-height: 70px;
+  text-align: center;
+  margin: auto auto;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  border-radius: 12px;
+  padding: 24px;
+  gap: 24px;
+  background-color: #f4f6f7;
+}
+
+.fc-daygrid-day-events {
+  border: none;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+.fc-h-event {
+  border: none;
+  background-color: white;
+  color: #3b90f4 !important;
+}
+
+.fc-event-title.fc-sticky {
+  color: #3b90f4 !important;
 }

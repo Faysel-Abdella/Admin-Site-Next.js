@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
-import { usePathname } from 'next/navigation';
-import sideBarContent from '@/data/sideBar';
+import { usePathname } from "next/navigation";
+import sideBarContent from "@/data/sideBar";
 
 const Navigation = ({
   order,
@@ -40,18 +40,18 @@ const Navigation = ({
   };
 
   useEffect(() => {
-    let storedOrder = localStorage.getItem('storedOrder');
+    let storedOrder = localStorage.getItem("storedOrder");
 
     if (!storedOrder) {
-      localStorage.setItem('storedOrder', '1');
-      storedOrder = '1';
+      localStorage.setItem("storedOrder", "1");
+      storedOrder = "1";
     }
     setCurrentOpened(parseInt(storedOrder, 10));
   }, []);
 
   const setSelectedOrder = (ord: string) => {
     setCurrentOpened(parseInt(ord, 10));
-    localStorage.setItem('storedOrder', ord);
+    localStorage.setItem("storedOrder", ord);
   };
 
   useEffect(() => {
@@ -68,29 +68,29 @@ const Navigation = ({
     <section>
       <Link
         href={route}
-        className={`flex justify-between items-center cursor-pointer px-6 py-3 rounded-xl ${
-          order !== '1' ? '' : ''
+        className={`flex cursor-pointer items-center justify-between rounded-xl px-6 py-3 ${
+          order !== "1" ? "" : ""
         } ${
           pathname === firstRoute || pathname.includes(init)
-            ? 'bg-activeLink' // Background for active link
-            : 'bg-transparent'
+            ? "bg-activeLink" // Background for active link
+            : "bg-transparent"
         }`}
         onClick={() => setSelectedOrder(order)}
       >
-        <div className='flex gap-4 items-center cursor-pointer'>
+        <div className="flex cursor-pointer items-center gap-4">
           {/* Icon */}
           <div>
             {pathname === firstRoute || pathname.includes(init) ? (
               <Image
                 src={activeIcon}
-                alt='Side bar icon'
-                className='scale-[1.2] transform transition-all'
+                alt="Side bar icon"
+                className="scale-[1.2] transform transition-all"
               />
             ) : (
               <Image
                 src={icon}
-                alt='Side bar icon'
-                className='scale-100 transform transition-all'
+                alt="Side bar icon"
+                className="scale-100 transform transition-all"
               />
             )}
           </div>
@@ -99,9 +99,9 @@ const Navigation = ({
           <p
             className={`${
               pathname === firstRoute || pathname.includes(init)
-                ? 'text-white'
-                : 'text-mainGray'
-            } font-bold text-[16px] leading-[22px] tracking-[-2%]`}
+                ? "text-white"
+                : "text-mainGray"
+            } text-[16px] font-bold leading-[22px] tracking-[-2%]`}
           >
             {mainTitle}
           </p>
@@ -112,9 +112,9 @@ const Navigation = ({
         <div
           className={`${
             parseInt(order) === currentOpened && pathname.includes(init)
-              ? ''
-              : 'hidden'
-          } pl-11 pt-2  flex flex-col  gap-2`}
+              ? ""
+              : "hidden"
+          } flex flex-col gap-2 pl-11 pt-2`}
         >
           {subTitles.map((item, index) => (
             <Link
@@ -122,13 +122,13 @@ const Navigation = ({
               key={index}
               onClick={() => setSelectedOrder(order)}
             >
-              <div className='flex gap-2 items-center  cursor-pointer'>
+              <div className="flex cursor-pointer items-center gap-2">
                 <p
                   className={`text-base ${
                     pathname === item.route || pathname.includes(item.route)
-                      ? 'text-mainBlack'
-                      : 'text-mainGray'
-                  } font-semibold`}
+                      ? "text-mainBlack"
+                      : "text-mainGray"
+                  } py-1 font-normal`}
                 >
                   {item.label}
                 </p>

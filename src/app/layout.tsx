@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body>
+      <body className="font-noto">
         <NextUIProvider>{children}</NextUIProvider>
       </body>
     </html>
